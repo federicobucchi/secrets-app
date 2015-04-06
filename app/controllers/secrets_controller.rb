@@ -1,5 +1,6 @@
 class SecretsController < ApplicationController
   def list
+    @secrets = Secret.all
   end
 
   def show
