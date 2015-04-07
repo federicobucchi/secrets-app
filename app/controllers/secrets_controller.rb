@@ -4,6 +4,18 @@ class SecretsController < ApplicationController
   end
 
   def show
+    token = params[:token]
+    @secret = Secret.where("token = ?", token)
+    if @secret.blank?
+      redirect_to pages_home_path
+    else
+      if @secret[0].active != false
+        @secret[0].active = false
+        @secret[0].save
+      else
+        redirect_to pages_home_path
+      end
+    end
   end
 
   def new
