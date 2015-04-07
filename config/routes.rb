@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   get "pages/home" => "pages#home"
 
   # New Secret
-  get "secrets" => "secrets#list"
   get "secrets/new" => "secrets#new"
-  get "secrets/:id" => "secrets#show"
+  get "secrets/generated/:token" => "secrets#show"
   post "secrets/create" => "secrets#create"
 end

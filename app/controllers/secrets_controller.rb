@@ -11,6 +11,8 @@ class SecretsController < ApplicationController
 
   def create
     @secret = Secret.new(secret_params)
+    @secret.active = true
+    @secret.token = (0...50).map { ('a'..'z').to_a[rand(30)] }.join
     if @secret.save
       redirect_to pages_home_path
     else
