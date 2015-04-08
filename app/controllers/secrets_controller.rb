@@ -25,11 +25,16 @@ class SecretsController < ApplicationController
     @secret = Secret.new(secret_params)
     @secret.active = true
     @secret.token = (0...50).map { ('a'..'z').to_a[rand(30)] }.join
+    flash[:url] = request.base_url + "/secrets/generated/" + @secret.token
     if @secret.save
-      redirect_to pages_home_path
+      redirect_to secrets_url_path
     else
       render :action => "new"
     end
+  end
+
+  def url
+    @url = flash[:url]
   end
 
   private

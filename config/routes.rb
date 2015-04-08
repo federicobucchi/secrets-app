@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   # New Secret
   get "secrets/new" => "secrets#new"
   get "secrets/generated/:token" => "secrets#show"
+  get "secrets/url" => "secrets#url"
   post "secrets/create" => "secrets#create"
 end
