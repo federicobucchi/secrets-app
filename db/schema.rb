@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411174359) do
+ActiveRecord::Schema.define(version: 20150411174557) do
 
   create_table "secrets", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150411174359) do
     t.string   "token",      limit: 255
     t.boolean  "active",     limit: 1
     t.integer  "whispers",   limit: 4
+    t.integer  "time",       limit: 4
   end
 
   add_index "secrets", ["user_id"], name: "index_secrets_on_user_id", using: :btree
