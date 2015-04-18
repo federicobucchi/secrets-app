@@ -10,8 +10,14 @@ class SecretsController < ApplicationController
       redirect_to pages_home_path
     else
       if @secret[0].active != false
-        @secret[0].active = false
-        @secret[0].save
+        if @secret[0].whispers > 1
+          @secret[0].whispers -= 1
+          @secret[0].save
+        else
+          @secret[0].active = false
+          @secret[0].save
+          redirect_to pages_home_path
+        end
       else
         redirect_to pages_home_path
       end
@@ -39,6 +45,6 @@ class SecretsController < ApplicationController
 
   private
     def secret_params
-      params.require(:secret).permit(:title, :text)
+      params.require(:secret).permit(:title, :text, :whispers, :time)
     end
 end
