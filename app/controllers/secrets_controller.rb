@@ -25,6 +25,7 @@ class SecretsController < ApplicationController
   end
 
   def new
+    @page = 'new-secret'
   end
 
   def create
